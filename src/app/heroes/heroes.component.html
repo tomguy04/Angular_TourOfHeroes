@@ -1,19 +1,15 @@
 <h2>My Heroes</h2>
   <ul class = 'heroes'>
-    <li *ngFor='let hero of heroes'>
-      <span class = 'badge'>{{hero.id}} </span>{{hero.name}}
+    <!-- click a hero to see their details in the page - listen for the hero item click event and update the hero detail
+    when you click on the list item, the onSelect method is called and the hero data is passed in-->
+    <!-- if the selected hero matches the hero in the li, apply the selected css class -->
+    <li *ngFor='let hero of heroes' (click)='onSelect(hero)' [class.selected]='hero === selectedHero'>
+      <span class = 'badge'>{{hero.id}} </span>{{hero.name}} 
     </li>
   </ul>
+  <app-hero-detail [hero]='selectedHero'></app-hero-detail>
 
 
-<!-- <h2>{{hero.name | uppercase}} Details</h2>
-<div><span>id: </span>{{hero.id}}</div>
-
-<div>
-  <label>name:
-    <input [(ngModel)] = "hero.name" placeholder="name">
-  </label>
-</div> -->
 
 
 
